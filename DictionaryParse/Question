@@ -1,0 +1,7 @@
+Given a dictionary with some available words
+Try to parse a sentence with all the possible ways
+input a sentence and a set with words, return a number
+e.g.
+    dictionary = {twitter, twit, ter, is, i, a, good, place, goodplace}
+    sentence = twitterisagoodplace
+    return 4

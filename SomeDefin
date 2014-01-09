@@ -1,0 +1,39 @@
+DFS
+BFS
+
+Polymorphism ---- Ability of an object to respond in a logically indentical fashion 
+                to messages of the same protocol
+
+Procedural oriented ---- step-by-step manipulation on data
+Object oriented ---- combine data and procedure
+
+C++ struct: default to public   
+C++ class : default to private
+
+STL
+    set:        red-black tree  search: O(logN)     No duplicate
+    multiset:   duplicate set   have count
+    map:        maps key to a value, like set
+    unordered map:  maps key to a value
+    unordered set:  hash table  O(1)    no free count
+
+
+
+Sorting stability
+
+Stable:
+Bubble
+Insertion
+
+Unstable:
+Selection ---- Less swap number
+
+Bucket sort is stable
+
+Quick sort is unstable
+
+Merge sort is stable with stable merge
+
+Heap sort is unstable 
+
+

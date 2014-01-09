@@ -1,0 +1,4 @@
+reverse the word order of a sentence
+
+giving the sentence "leading the way to retirement income certainty" --- from the airport ad
+return a sentence "certainty income retirement to way the leading"

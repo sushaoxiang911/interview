@@ -1,0 +1,21 @@
+giving a tree, find all the neighbor nodes
+e.g.
+     1
+    / \
+   2   3
+  /\   /\
+ 4  5  6 7
+
+the first level: no neighbor pair 
+    second      2 and 3 are neighbor
+    third       4 and 5 are neighbor pair 
+                5 and 6 are neighbor pair
+                6 and 7 are neighbor pair
+    use pointers to connect the neighbor pair nodes:
+
+First way: level order traversal(method is ignored)
+Second way: every node's left child and right child are neighbor
+            and the right child and the right child of the neighbors are neighbors
+
+
+

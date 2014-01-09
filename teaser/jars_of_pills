@@ -1,0 +1,11 @@
+Giving 5 jars of pills, one jar contains contaminated pills with 1mg less weight. 
+How to find this specific jar with only one scale?
+
+Pick 1 pill from the first jar
+     2 pills from the second jar
+     3 pills from the third jar
+        .
+        .   
+        .
+    The number of weight lost compared with uncontaminated, then the jar with that number is the
+    target
