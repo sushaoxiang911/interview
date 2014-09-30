@@ -1,0 +1,11 @@
+level order traversal of a tree by bottom up
+
+     3
+    /\
+   9  20
+      /\
+     15 7
+
+15 7
+9 20
+3

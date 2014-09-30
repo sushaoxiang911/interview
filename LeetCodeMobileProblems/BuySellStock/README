@@ -1,0 +1,10 @@
+an array of int
+every element is the price of i day price
+a transaction of buying and selling
+only one transaction is required
+buy one and sell one, get the max profit
+
+[5, 4, 2, 3, 5, 8, 4]
+
+max is buy in 2 and sell in 8
+profit is 6

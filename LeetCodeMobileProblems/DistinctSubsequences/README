@@ -1,0 +1,9 @@
+Given a string S and a string T, count the number of distinct subsequences of T in S
+
+A subsequence of a string is a new string which is formed from the original string by deleting 
+some of the characters without disturbing the relative positions of the remaining characters 
+ACE is a subsequence of ABCDE but AEC is not
+
+e.g.
+S = rabbbit, T = rabit
+return 3

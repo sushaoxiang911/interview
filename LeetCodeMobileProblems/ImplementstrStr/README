@@ -1,0 +1,6 @@
+Implement strStr()
+
+Returns a pointer to the first ocfurrence of needle in haystack, or null if needles is not 
+part of haystack
+
+check is a string is a substring of another string

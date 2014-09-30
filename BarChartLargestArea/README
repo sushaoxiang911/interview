@@ -1,0 +1,12 @@
+given a bar chart and every bar has width of 1
+try to find the biggest rectangle area in this chart
+
+for example
+    {1, 2, 3, 2}
+    
+    the rectangle start from the first bar is 
+    1 * 4 = 4
+    the rectangle start from the second bar is
+    2 * 3 = 6
+    the rectangle start from the third bar is
+    

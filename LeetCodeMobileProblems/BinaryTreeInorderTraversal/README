@@ -1,0 +1,7 @@
+binary tree inorder traversal
+left child -> node -> right child
+
+
+
+preorder is node -> left child -> right child
+postorder is left -> node -> right child

@@ -1,0 +1,12 @@
+A message contains A-Z
+and
+A 1
+B 2
+...
+Z 26
+
+give an encoded message
+how many ways to decode it
+
+e.g.
+12 could be AB or L

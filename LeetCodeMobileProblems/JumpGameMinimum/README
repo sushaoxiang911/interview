@@ -1,0 +1,13 @@
+Given an array of non-negative integers, you are initially positioned at the first index
+of the array.
+Each element in the array represents your maximum jump length at that position.
+
+Your goal is to reach the last index in the mini mum number of jumps.
+
+
+
+2, 3, 1, 1, 4
+
+minimum step is 2
+from index 0 to index 1
+and index 1 to index 4

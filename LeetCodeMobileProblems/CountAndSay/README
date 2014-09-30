@@ -1,0 +1,8 @@
+1, 11, 21, 1211, 111221, ..
+
+1 is one 1 so next is 11
+11 is two 1s so next is 21
+21 is one 2 one 1 so next 1211
+...
+
+what is nth

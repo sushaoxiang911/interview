@@ -1,0 +1,126 @@
+#include <iostream>
+#include <stack>
+
+using namespace std;
+
+
+struct node {
+    int val;
+    node* left;
+    node* right;
+};
+
+
+void recursion (node* root) {
+    if (root == NULL)
+        return;
+    recursion (root -> left);
+    cout << root -> val << endl;
+    recursion (root -> right);
+}
+
+
+// when want to change the recursion into a itarative
+// consider stack first
+void iteration (node* root) {
+    if (root == NULL)
+        return;    
+    stack <node*> path;
+    node* p = root;
+    
+    while (p != NULL) {
+        // what should be in stack??
+        // we should at least have the node itself and record it since we should go deep to left
+        // we also need to remember the right if it exists
+        // the same way to consider as the recursion
+        // every subtree is a tree and use the big while condition
+        // to use iteration instead of recursion
+        while (p != NULL) {
+            if (p -> right)
+                path.push(p -> right);
+            path.push(p);
+            p = p -> left;
+        }
+        // take the most left out of the stack
+        p = path.top();
+        path.pop();
+        
+        // must guarantee that we have branched from left subtree to right subtree
+        // we don't want to continue our deep left in left tree
+        // so go up until we find a node has right subtree
+        while (!path.empty() && p -> right == 0) {
+            cout << p -> val << endl;
+            p = path.top();
+            path.pop();
+        }
+    
+        // pop this p since we need to branch to right subtree
+        cout << p -> val << endl;
+        
+        if (!path.empty()) {
+            p = path.top();
+            path.pop();
+        } else
+            p = NULL;
+
+    }
+}
+
+void iteration_2 (node* root) {
+    stack<node*> path;
+    node* p = root;
+    while (1) {
+        if (p != NULL) {
+            path.push(p);
+            p = p -> left;
+        } else {
+            if (!path.empty()) {
+                p = path.top();
+                path.pop();
+                cout << p -> val << endl;
+                p = p -> right;
+            } else {
+                break;
+            }
+        }
+    }
+
+}
+
+
+int main() {
+    node* node1 = new node;
+    node* node2 = new node;
+    node* node3 = new node;
+    node* node4 = new node;
+    node* node5 = new node;
+    node* node6 = new node;
+    node* node7 = new node;
+    node1 -> val = 1;
+    node2 -> val = 2;
+    node3 -> val = 3;
+    node4 -> val = 4;
+    node5 -> val = 5;
+    node6 -> val = 6;
+    node7 -> val = 7;
+
+    node1 -> left = node2;
+    node1 -> right = node3;
+    node2 -> left = node4;
+    node2 -> right = node5;
+    node3 -> right = node6;
+    node3 -> left = node7;
+
+    cout << "recursion: " << endl;
+    recursion(node1);
+    cout << endl;
+    cout << "iteration: " << endl;
+    iteration(node1);
+    cout << endl;
+    cout << "iteration 2: " << endl;
+    iteration_2(node1);
+    cout << endl;
+}
+
+
+

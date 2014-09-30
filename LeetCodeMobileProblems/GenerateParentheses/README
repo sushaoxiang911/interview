@@ -1,0 +1,9 @@
+Given n paris of parentheses, write a funciotn to generate all combinations of well-formed
+parentheses.
+
+e.g., given n = 3, a solution set is:
+"((()))"
+"(()())"
+"(())()"
+"()(())"
+"()()()"

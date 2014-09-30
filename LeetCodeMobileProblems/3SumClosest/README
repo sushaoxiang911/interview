@@ -1,0 +1,5 @@
+give S, find three number of which the sum is closest to a target. 
+
+
+cannot use 2sum anymore
+binary can be still applied here.

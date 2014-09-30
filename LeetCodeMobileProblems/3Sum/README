@@ -1,0 +1,8 @@
+array of n integers, find elements a, b, c in S such that a+b+c=0. Find all unique triplets
+{-1, 0, 1, 2, -1, 4}
+answer should be (-1, 0, 1), (-1, -1, 2)
+
+
+consider two thinking: 
+1. use 2-sum, O(n) algorithm
+2. use binary search boosting one loop speed

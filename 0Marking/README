@@ -1,0 +1,5 @@
+given a matrix, if there is a zero in side, mark the whole row and the whole column to 0s
+
+notice that, if do marking when encounter a zero, then all the matrix are zeros.
+
+Must keep track all the zero positions

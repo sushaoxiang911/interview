@@ -1,0 +1,5 @@
+Evaluate the value of an arithmetic expression in Reverse Polish Notation
+5 1 2 + 4 * + 3 -
+means 5 + ((1 + 2) * 4) - 3
+
+using stack

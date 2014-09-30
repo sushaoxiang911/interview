@@ -1,0 +1,19 @@
+ Given numRows, generate the first numRows of Pascal's triangle.
+
+For example, given numRows = 5,
+Return
+
+[
+     [1],
+    [1,1],
+   [1,2,1],
+  [1,3,3,1],
+ [1,4,6,4,1]
+]
+
+
+Pascal's Triangle
+
+is to prove Pascal's rule
+
+Cn,k = Cn-1,k-1 + Cn-1,k

@@ -1,0 +1,5 @@
+non-negative number a1, a2, ... , an
+coordinate (i, ai)
+n vertical lines
+use any two of them to make a container
+find the container can contain most water
