@@ -1,0 +1,3 @@
+We have a stream of integers
+We track the number, store into data structure
+We want to check a number and the number of integers that are smaller than it.
