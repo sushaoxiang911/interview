@@ -1,0 +1,7 @@
+Given an array, find all the number of pairs that A[m] + A[n] is even
+
+e.g.
+
+1 2 3 4 5 6
+
+return 6

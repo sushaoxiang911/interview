@@ -1,0 +1,9 @@
+25 horses, 5 racing lane(everytime we can have 5 horses racing together)
+how to find the first three in seven racing?
+
+divide into 5 groups, find the first of five groups -> 5 times
+race these five first's, gets the ranking of these 5 -> 1 time, here we know which is the first one
+we take the second and third of the first group, the first and the second of the second group and the first of the third group.
+The first and the second is the second and the third -> 1 time.
+
+7 times

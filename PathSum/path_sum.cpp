@@ -28,8 +28,7 @@ void find_path(node* root, vector<int> path, int sum) {
                 cout << path[j] << " ";
             cout << endl;
         }
-    }
-    
+    }    
     find_path(root -> left, path, sum);
     find_path(root -> right, path, sum);
 }

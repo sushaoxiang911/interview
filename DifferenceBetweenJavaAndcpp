@@ -1,9 +1,7 @@
 1. All the memory in Java is dynamically allocated
 2. There is a garbage collection system
    No need to consider memory leak
-3. Java use singleton as global variable
-   Singleton is a kind of special class which just contains static method and static variable,
-   indicating that there is no instance (just one instance which is called by the class name).
+3. Java has no global define
 4. Java doesn't use macros, no #define
 5. Java has no headfile, it uses package instead
 6. Java has total control on the pointers
@@ -11,3 +9,8 @@
    it translate the code into a kind of .class file, which is run on JVM. It's not so efficient,
    but very convenient since the .class file can be run on the different platforms without 
    compiling again. 
+8. Java uses all reference
+9. JVM - 
+10.Java is complete OOP program language
+
+

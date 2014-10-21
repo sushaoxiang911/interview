@@ -27,7 +27,7 @@ private:
     
     void recent_use (node* result) {
         result -> prev = NULL;
-        result -> next = start;
+        result -> next = head;
         start = result;
     }
 

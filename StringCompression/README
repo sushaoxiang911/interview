@@ -1,0 +1,6 @@
+Replace repeatec strings characters with char and a number
+e.g
+aabcccccaaa -> a2b1c5a3
+
+If the compressed string would not become smaller than the original string, your method should
+return the original string

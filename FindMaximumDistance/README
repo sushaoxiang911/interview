@@ -1,0 +1,1 @@
+Given an array of integers, find the maximum j-i with A[i] < A[j] 

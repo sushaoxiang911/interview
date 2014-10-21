@@ -13,7 +13,13 @@ struct element {
 
 
 // bfs guarantees taht it is a shortest path
-public vector<vector<string> > findLadders (string start, string end, set<string> dict) {  
+// every path should contain a hash to check if 
+// a word has already traversed
+// since different path may pass the same node
+// but one must ensure that in every single path
+// there is no loop
+
+vector<vector<string> > findLadders (string start, string end, set<string> dict) {  
 
     vector<vector<string> > result; 
     vector<string> path; 

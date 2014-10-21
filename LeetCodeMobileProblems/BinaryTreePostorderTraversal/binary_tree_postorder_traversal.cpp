@@ -1,5 +1,6 @@
 #include <iostream>
 #include <stack>
+#include <queue>
 
 using namespace std;
 
@@ -37,6 +38,35 @@ void iteration (node* root) {
         node *p = print.top();
         print.pop();
         cout << p -> val << endl;
+    }
+}
+
+// use a queue instead of using two stacks
+
+void iteration_4(node* root) {
+    if (root == NULL)
+        return;
+    bool expand_root = false;
+    queue<node*> q;
+    q.push(root);
+    node* last_access = NULL;
+    while (!q.empty()) {
+        node* current = q.front();
+        q.pop();
+        if (current -> left == last_access || current -> right == last_access || 
+                (current -> left == NULL && current -> right == NULL)) {
+            cout << current -> val << endl;
+            last_access = current;
+        } else {
+            if (current != root || !expand_root) {
+                if (current -> left != NULL)
+                    q.push(current -> left);
+                if (current -> right != NULL)
+                    q.push(current -> right);
+                expand_root = true;
+            }
+            q.push(current);
+        }
     }
 }
 
@@ -143,5 +173,8 @@ int main() {
     cout << endl;
     cout << "iteration 3: " << endl;
     iteration_3(node1);
+    cout << endl;
+    cout << "iteration 4: " << endl;
+    iteration_4(node1);
     cout << endl;
 }
