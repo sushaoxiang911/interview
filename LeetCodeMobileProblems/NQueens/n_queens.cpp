@@ -60,8 +60,47 @@ vector<vector<string> > n_queens (int n) {
     return result;
 }
 
+void n_queens_2_help(vector<vector<string> > &result, int n,
+            vector<int> &current_result, int index) {
+    if (index != 0) {
+        int last_pos = current_result[n-1];
+        for (int i = 0; i < n - 1; ++i) {
+            if (current_result[i] == last_pos ||
+                    abs(current_result[i] - last_pos) == abs(i - (n-1)))
+                return;
+        }
+    }
+
+    if (index == n) {
+        vector<string> sol;
+        for (int i = 0; i < n; ++i) {
+            string current_row(n, '.');
+            int current_position = current_result[i];
+            current_row[current_position] = 'Q';
+            sol.push_back(current_row);                                       
+        }
+        result.push_back(sol);
+        return;
+    }
+    for (int i = 0; i < n; ++i) {
+        current_result.push_back(i);
+        n_queens_2_help(result, n, current_result, index + 1);
+        current_result.pop_back();
+    } 
+}
+
+vector<vector<string> > n_queens_2 (int n) {
+    vector<vector<string> > result;
+    vector<int> current_result;
+    current_result.clear();
+    n_queens_help(result, n, current_result, 0);
+    return result;
+}
+
+
+
 int main() {
-    vector<vector<string> > result = n_queens(4);
+    vector<vector<string> > result = n_queens_2(4);
     for (int i = 0; i < result.size(); ++i) {
         for (int j = 0; j < result[i].size(); ++j) 
             cout << result[i][j] << endl;

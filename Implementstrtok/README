@@ -1,0 +1,5 @@
+Implement c function strtok
+
+which takes a str pointer and a set of delimiters
+
+strtok(NULL, "  ") means to get the next token

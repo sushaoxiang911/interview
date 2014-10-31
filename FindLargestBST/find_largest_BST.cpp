@@ -23,6 +23,11 @@ int find_largest_BST_help(node* root, int &max, int &min, int &size, node* &bst)
         return 0;
     bool is_BST = true;
     int left_BST_nodes = find_largest_BST_help(root -> left, max, min, size, bst);
+    // have to use a current_min to record the min since it is the left tree
+    // and later we will call right_tree where min will be replaced
+    // since we don't know current node is the left child or the right child of the parent
+    // we have to remember the min and max since we might use either of them
+    // which we don't know
     int current_min = (left_BST_nodes == 0) ? root -> val : min;
     // left child is not a bst
     // or the current node cannot be added into the 

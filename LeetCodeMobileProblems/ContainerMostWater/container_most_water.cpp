@@ -72,9 +72,37 @@ int find (vector<int> height) {
     return max_size;
 }
 
+// a easier way is that
+// we set up two sides from left-most and right-most
+// based on these we calculate the max water it can contain
+// So the only way that we could get a better solution is that
+// we move the shorter one so if we can get a taller one
+// we can have a better solution
+int find_2(vector<int> height) {
+    if (height.empty())
+        return 0;
+    int result = 0;
+    int left = 0;
+    int right = height.size() - 1;
+    while (left < right) {
+        int left_side = height[left];
+        int right_side = height[right];
+        int deep = left_side < right_side ? left_side : right_side;
+        int temp_result = deep * (right - left);
+        if (temp_result > result)
+            result = temp_result;
+        if (left_side < right_side)
+            left++;
+        else
+            right--;
+    }
+    return result;
+}
+
 int main() {
     vector<int> height {5, 2, 12, 1, 5, 3, 4, 11, 9, 4};
     cout << "result: " << find(height) << endl;
+    cout << "result: " << find_2(height) << endl;
 }
 
 

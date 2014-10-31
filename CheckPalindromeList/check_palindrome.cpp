@@ -86,6 +86,39 @@ bool check_palindrome_2(node* head) {
     return result;
 }
 
+bool check_palindrome_3_help(node* head, node* &temp, int len) {
+    if (len == 1) {
+        temp = head -> next;
+        return true;
+    }
+    if (len == 2) {
+        if (head -> val == head -> next -> val) {
+            temp = head -> next -> next;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    if (check_palindrome_3_help(head -> next, temp, len - 2) &&
+            head -> val == temp -> val) {
+        temp = temp -> next;
+        return true;
+    } else
+        return false;
+}
+
+
+bool check_palindrome_3(node* head) {
+    int len = 0;
+    node* temp = head;
+    while (temp != NULL) {
+        ++len;
+        temp = temp -> next;
+    }
+    temp = head;
+    return check_palindrome_3_help(head, temp, len);
+}
 
 
 int main() {
@@ -97,7 +130,7 @@ int main() {
     node1 -> val = 1;
     node2 -> val = 2;
     node3 -> val = 3;
-    node4 -> val = 1;
+    node4 -> val = 2;
     node5 -> val = 1;
     node1 -> next = node2;
     node2 -> next = node3;
@@ -105,4 +138,5 @@ int main() {
     node4 -> next = node5;
     
     cout << "result: " << check_palindrome_2(node1) << endl;
+    cout << "result: " << check_palindrome_3(node1) << endl;
 }

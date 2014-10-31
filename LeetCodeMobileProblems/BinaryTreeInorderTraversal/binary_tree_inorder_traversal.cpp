@@ -86,6 +86,29 @@ void iteration_2 (node* root) {
     }
 }
 
+void iteration_3 (node* root) {
+    stack<node*> path;
+    node* p = root;
+    path.push(p);
+    while (!path.empty()) {
+        p = path.top();
+        if (p -> left != NULL)
+            path.push(p -> left);
+        else {
+            while (p -> right == NULL) {
+                path.pop();
+                cout << p -> val << endl;
+                if (path.empty())
+                    return;
+                p = path.top();
+            }
+            path.pop();
+            cout << p -> val << endl;
+            path.push(p -> right);
+        }
+    }
+}
+
 
 int main() {
     node* node1 = new node;
@@ -118,6 +141,9 @@ int main() {
     cout << endl;
     cout << "iteration 2: " << endl;
     iteration_2(node1);
+    cout << endl;
+    cout << "iteration 3: " << endl;
+    iteration_3(node1);
     cout << endl;
 }
 

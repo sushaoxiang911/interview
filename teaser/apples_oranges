@@ -1,0 +1,10 @@
+Given three baskets, one of which is filled with apples, another one is filled with oranges,
+and the last one is filled with mixing of apples and oranges.
+We have tree labels to mark those tree baskets, but occationally, ALL of them are on the 
+wrong place. You are allowed to pick just one fruit and determine the right place of
+the tree labels
+
+Grab from the one labeled with "mix"
+if it is an apple then this former "mix" is actually "apple"
+and the other two must be mix and orange
+the former "orange" will be "mix" and the former "apple" will be "orange"
