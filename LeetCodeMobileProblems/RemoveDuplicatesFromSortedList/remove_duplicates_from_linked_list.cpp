@@ -68,7 +68,7 @@ int main() {
     node2 -> val = 1;
     node3 -> val = 1;
     node4 -> val = 1;
-    node5 -> val = 3;
+    node5 -> val = 1;
     node1 -> next = node2;
     node2 -> next = node3;
     node3 -> next = node4;

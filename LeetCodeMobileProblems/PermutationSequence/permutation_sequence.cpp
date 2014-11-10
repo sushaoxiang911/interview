@@ -19,10 +19,12 @@ string get_permutation(int k, int n) {
         int digit_option = n - i + 1;
         int digit_remain = n - i;
         for (int j = digit_option; j >= 1; --j) {
+            // here every time we increment i by 1
+            // so we decrement digit_remain by 1
+            // no vector needed
             int current_accumulation = factorial[digit_remain] * (j - 1) + 1;
             if (current_order + current_accumulation <= k) {
 
-                cout << "j: " << j << endl;
                 int temp_id = j;
                 int temp = 1;
                 for (int k = 0; k < n; ++k) {
@@ -46,6 +48,39 @@ string get_permutation(int k, int n) {
 }
 
 
+// we only need to know the index of the digit that we will pick for every time
+// that is if we 1256 in our candidates, if we choose 5 as the first
+// then our candidates have 126 which is in order and can be directly used in next
+// iteration
+//
+string get_permutation_2(int k, int n) {
+    vector<int> candidates;
+    int permutation_count = 1;
+    for (int i = 0; i < n; i++) {
+        candidates.push_back(i + 1);
+        permutation_count *= (i + 1);
+    }
+
+    // start with 0
+    k--;
+
+    string result = "";
+    for (int i = 0; i < n; ++i) {
+        int digit_choice = n - i;
+        permutation_count /= digit_choice;
+        int choose_digit_index = k / permutation_count;
+        result += ('0' + candidates[choose_digit_index]);
+        // update the candidate vector
+        for (int j = choose_digit_index; j < n - i - 1; ++j) {
+            candidates[j] = candidates[j+1];
+        }
+        k %= permutation_count;
+    }
+    return result;
+}
+
+
 int main() {
-    cout << "result: " << get_permutation (6, 3) << endl;
+    cout << "result: " << get_permutation(6, 3) << endl;
+    cout << "result: " << get_permutation_2 (6, 3) << endl;
 }

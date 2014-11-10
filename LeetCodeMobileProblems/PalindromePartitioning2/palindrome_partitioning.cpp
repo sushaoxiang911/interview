@@ -62,9 +62,9 @@ int palindrome_partitioning(string str) {
 // count[j] min{count[j], 1 + count[i+1]}
 
 // remember palindrome grid
-//         i ->
+//         j ->
 //        a b a b
-// j|   a 1 0 0 0
+// i|   a 1 0 0 0
 //  V   b 0 1 0 0
 //      a 1 0 1 0
 //      b 0 1 0 1
@@ -79,25 +79,25 @@ int palindrome_partitioning_2(string str) {
                 dp[i][j] = true;
         }
     }
+
     for (int i = 0; i < size; ++i) {
         for (int j = 0; j < size; ++j) 
             cout << dp[i][j] << " ";
         cout << endl;
     }
     vector<int> count(size + 1, 0);
-    count[size] = 0;
-    for (int j = size - 1; j >= 0; --j) {
-        count[j] = INT_MAX;
-        for (int i = j; i < size; ++i) {
-            if (dp[i][j]) {
-                count[j] = min(count[j], count[i+1] + 1);
-            }
+
+    count[0] = 0;
+    for (int i = 0; i < size; ++i) {
+        count[i+1] = INT_MAX;
+        for (int j = 0; j <= i; ++j) {
+            if (dp[i][j])
+                count[i+1] = min(count[i+1], count[j] + 1); 
         }
     }
-    for (int i = 0; i < size + 1; i++) 
-        cout << count[i] << " ";
-    cout << endl;
-    return count[0];
+
+
+    return count[size];
 }
 
 

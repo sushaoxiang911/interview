@@ -1,0 +1,9 @@
+malloc is not typesafe. It just returns a void pointer
+
+new operator will call constructor and destructor of c++ class
+
+malloc returns null if allocation fails while new will throw an exception
+
+we can overload new operator for User Defined Type
+
+

@@ -66,11 +66,67 @@ string find_window(string s, string t) {
     return result;
     
 }
+string find_window_2(string s, string t) {
+    // simply use double cursor to do that
+    int record[256];
+    int current[256];
+    // init
+    for (int i = 0; i < 256; ++i) {
+        record[i] = 0;
+        current[i] = 0;
+    }
+
+    for (int i = 0; i < t.size(); ++i) 
+        record[t[i]] ++;
+    
+    string result = "";
+    int length = INT_MAX;
+
+    int begin = 0;
+    for (int end = 0; end < s.length(); ++end) {
+        // if the current char is not in t
+        // just ignore
+        char current_char = s[end];
+        if (record[current_char] == 0)
+            continue;
+        current[current_char]++;
+        
+        // check if we have a window that includes everything
+        bool is_completed = true;
+        for (int i = 0; i < 256; ++i) {
+            if (current[i] < record[i]) {
+                is_completed = false;
+                break;
+            }
+        }
+        // if completed, we can start to move the begin cursor
+        if (is_completed) {
+            while (1) {
+                char begin_char = s[begin];
+                if (record[begin_char] == 0) {
+                    begin++;
+                } else if (current[begin_char] > record[begin_char]) {
+                    current[begin_char]--;
+                    begin++;
+                } else {
+                    int current_length = end - begin + 1;
+                    if (current_length < length) {
+                        result = s.substr(begin, current_length);
+                        length = result.size();
+                    }
+                    break;
+                }
+            }
+        
+        }
+    }
+    return result;
+}
 
 int main() {
     string s = "ADOBECODEBANC";
     string t = "ABC";
-    cout << "result: " << find_window(s, t) << endl;
+    cout << "result: " << find_window_2(s, t) << endl;
 }
 
 

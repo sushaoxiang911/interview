@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -79,6 +80,11 @@ string multiply_decimal(string a, string b) {
             temp_result = (char)(num + '0') + temp_result;
             b_index--;
         }
+        // the remain carry
+        if (carry > 0) {
+            temp_result  = (char)(carry + '0') + temp_result;
+        }
+
         int zero_count = a.size() - 1 - a_index;
         for (int i = 0; i < zero_count; ++i)
             temp_result += '0';
@@ -93,9 +99,63 @@ string multiply_decimal(string a, string b) {
 }
 
 
+string multiply_decimal_2(string a, string b) {
+    if (a == "0" || b == "0")
+        return "0";
+    int sign_flag = 0;
+    if (a[0] == '-') {
+        sign_flag--;
+        a = a.substr(1);
+    }
+    if (b[0] == '-') {
+        sign_flag++;
+        b = b.substr(1);
+    }
+    
+    vector<int> record;
+    for (int a_index = a.size() - 1; a_index >= 0; a_index--) {
+        int a_num = a[a_index] - '0';
+        int a_place = a.size() - 1 - a_index;
+        for (int b_index = b.size() - 1; b_index >= 0; b_index--) {
+            int b_num = b[b_index] - '0';
+            int b_place = b.size() - 1 - b_index;
+            int temp = a_num * b_num;
+            if (a_place + b_place >= record.size()) {
+                record.push_back(temp);
+            } else {
+                record[a_place+b_place] += temp;
+            }
+        }
+    }
+
+    
+    // carry
+    int carry = 0;
+    for (int i = 0; i < record.size(); ++i) {
+        int num = record[i] + carry;
+        record[i] = num % 10;
+        carry = num / 10;
+    }
+    if (carry > 0) {
+        record.push_back(carry);
+    }
+    
+    string result = "";
+    for (int i = record.size() - 1; i >= 0; --i) {
+        result += (char) (record[i] + '0');
+    }
+    if (sign_flag) {
+        result = '-' + result;
+    }
+    return result;
+}
+
+
 int main() {
-    string a = "-11";
-    string b = "-12";
-    string result = multiply_decimal(a, b);
+    string a = "-23";
+    string b = "45";
+    string result2 = multiply_decimal(a, b);
+    cout << "result: " << result2 << endl;
+    string result = multiply_decimal_2(a, b);
     cout << "result: " << result << endl;
 }

@@ -6,7 +6,7 @@ using namespace std;
 
 void next_permutation(vector<int> &arr) {
     
-    int carry_index;
+    int carry_index = -1;
     for (int i = arr.size() - 2; i >= 0; --i) {
         if (arr[i] < arr[i+1]) {
             carry_index = i;

@@ -79,6 +79,9 @@ node* lca_3_fun(node* root, node* p, node* q) {
     
 }
 
+// basic idea is return either a node found or the ancester
+// so we have to check if it is the ancester or the node we are looking for
+
 
 // use a bool to keep track if the node is the ancestor or not
 // so we can distinguish
