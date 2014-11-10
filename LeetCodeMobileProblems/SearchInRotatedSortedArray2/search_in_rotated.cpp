@@ -15,7 +15,7 @@ int find_help(vector<int> &arr, int start, int end, int target) {
     
     // left side is sorted and no duplicates
     if (arr[start] < arr[mid]) {
-        if (target >= arr[start] && target <= arr[end])
+        if (target >= arr[start] && target <= arr[mid])
             return find_help(arr, start, mid - 1, target);
         else
             return find_help(arr, mid + 1, end, target);
@@ -46,6 +46,6 @@ int search_in_rotated(vector<int> &arr, int target) {
 }
 
 int main() {
-    vector<int> arr {6, 6, 6, 6, 0, 1, 6};
-    cout << "result: " << search_in_rotated(arr, 0) << endl;
+    vector<int> arr {4, 5, 6, 7, 8, 2, 3};
+    cout << "result: " << search_in_rotated(arr, 6) << endl;
 }
