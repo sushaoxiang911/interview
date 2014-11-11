@@ -5,7 +5,7 @@
 
 using namespace std;
 
-
+/*
 // O(n^2) time complexity
 // use a map to track the words list
 // word list can have duplicate
@@ -40,7 +40,6 @@ vector<int> find_substring(vector<string> list, string str) {
             current_track[list[i]] = 0;
         if (dp[cursor]) {
             // expands from here
-            bool is_found = true;
             for (int i = 0; i < list.size(); ++i) {
                 string temp_str = str.substr(cursor + i * word_size, word_size);
                 auto it = current_track.find(temp_str);
@@ -48,7 +47,6 @@ vector<int> find_substring(vector<string> list, string str) {
                     for (int j = 0; j <= i; ++j) {
                         dp[cursor + word_size * j] = false;
                     }
-                    is_found = false;
                     break;
                 }
                 if (it -> second >= dict[temp_str]) {
@@ -60,20 +58,70 @@ vector<int> find_substring(vector<string> list, string str) {
                         }
                         dp[cursor + word_size * j] = false;
                     }
-                    is_found = false;
                     break;
                 }
             }
-            if (is_found)
-                result.push_back(cursor);
+            result.push_back(cursor);
         }
         ++cursor;
     }
+    cout << "dp: " << endl;
+    for (int i = 0; i < dp.size(); ++i)
+        cout << dp[i] << " ";
+    cout << endl;
     return result;
+}
+*/
+
+// just use a map to record
+// and check every potential start position
+vector<int> find_substring(vector<string> list, string str) {
+    vector<int> result;
+    if (str.empty())
+        return result;
+    if (list.empty()) {
+        for (int i = 0; i < str.size(); ++i)
+            result.push_back(i);
+        return result;
+    }
+    // the dictionary
+    map<string, int> dict;
+    for (int i = 0; i < list.size(); ++i) {
+        ++dict[list[i]];
+    }
+    int word_size = list[0].size();
+    int whole_size = word_size * list.size();
+
+    for (int i = 0; i < str.size() - whole_size; ++i) {
+        map<string, int> current_track;
+        for (int j = 0; j < list.size(); ++j) {
+            current_track[list[j]] = 0;
+        }
+        bool is_result = true;
+        for (int j = 0; j < list.size(); ++j) {
+            string current_str = str.substr(i + word_size * j, word_size);
+            auto it = dict.find(current_str);
+            if (it == dict.end()) {
+                is_result = false;
+                break;
+            }
+            ++current_track[current_str];
+            if (current_track[current_str] > dict[current_str]) {
+                is_result = false;
+                break;
+            }
+        }
+        if (is_result)
+            result.push_back(i);
+    
+    }
+
+    return result;
+
 }
 
 int main() {
-    string str = "barfoobarthefoobarman";
+    string str = "barfoothefoobarman";
     vector<string> list {"foo", "bar"};
     vector<int> result = find_substring(list, str);
     cout << "result: " << endl;

@@ -54,7 +54,7 @@ bool is_number(const char* str) {
     int current_state = 0;
     while (*str != '\0') {
         int current_input = input(*str);
-        if (current_input == 5)
+        if (current_input == -1)
             return false;
         current_state = transTable[current_state][current_input];
         if (current_state == -1)

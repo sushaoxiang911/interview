@@ -8,6 +8,19 @@ struct node
     node* next;
 };
 
+node* reverse (node* head) {
+    node* prev = NULL;
+    node* current = head;
+    while (current != NULL) {
+        node* temp = current -> next;
+        current -> next = prev;
+        prev = current;
+        current = temp;
+    }
+    return prev;
+}
+
+/*
 node* reverse (node* head)
 {
     node* t = NULL;
@@ -21,7 +34,7 @@ node* reverse (node* head)
     }
     return t;
 }
-
+*/
 node* reverse_help (node* rest, node* reversed)
 {
     node* current;
@@ -50,8 +63,8 @@ int main()
     node1 -> next = node2;
     node2 -> next = node3;
     node3 -> next = NULL;
-//    node* return_node = reverse(node1);
-    node* return_node = reverse_recursion (node1);
+    node* return_node = reverse(node1);
+//    node* return_node = reverse_recursion (node1);
     node* temp = return_node;
     while (temp != NULL)
     {

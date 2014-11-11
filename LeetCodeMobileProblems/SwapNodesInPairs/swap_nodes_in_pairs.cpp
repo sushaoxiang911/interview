@@ -19,6 +19,30 @@ node* swap_in_pair(node* head) {
     return pair2;
 }
 
+node* swap_in_pair_2(node* head) {
+    if (head == NULL || head -> next == NULL)
+        return head;
+    node* dummy = new node;
+    node* prev = dummy;
+    while (head != NULL && head -> next != NULL) {
+        node* node1 = head;
+        node* node2 = head -> next;
+        head = node2 -> next;
+        prev -> next = node2;
+        node2 -> next = node1;
+        prev = node1;
+
+    }
+    if (head != NULL) {
+        prev -> next = head;
+        head -> next = NULL;
+    }
+    node* result = dummy -> next;
+    delete dummy;
+    return result;
+
+}
+
 int main() {
     node* node1 = new node;
     node* node2 = new node;
@@ -35,7 +59,7 @@ int main() {
     node3 -> next = node4;
     node4 -> next = node5;
     
-    node* result = swap_in_pair(node1);
+    node* result = swap_in_pair_2(node1);
     node* temp = result;
     while (temp != NULL) {
         cout << temp -> val << " ";

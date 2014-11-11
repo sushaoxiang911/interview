@@ -9,6 +9,20 @@ struct node
     node* next;
 };
 
+
+node* dlink_reverse(node* head) {
+    node* current = head;
+    node* temp;
+    while (current != NULL) {
+        temp = current;
+        current = current -> next;
+        temp -> next  = temp -> prev;
+        temp -> prev = current;
+    }
+    return temp;
+}
+
+/*
 // traverse 
 node* dlink_reverse (node* p)
 {
@@ -22,7 +36,7 @@ node* dlink_reverse (node* p)
     }
     return t;
 }
-
+*/
 int main()
 {
     node* node1 = new node;

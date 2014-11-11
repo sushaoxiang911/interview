@@ -4,10 +4,16 @@
 using namespace std;
 
 void spiral_help(int rs, int re, int cs, int ce, int start, vector<vector<int> > &matrix) {
+    
     if (rs == re) {
         matrix[rs][cs] = start;
         return;
     }
+
+    if (rs > re) {
+        return;
+    }
+
     for (int i = cs; i < ce; ++i) {
         matrix[rs][i] = start;
         start++;
@@ -24,7 +30,7 @@ void spiral_help(int rs, int re, int cs, int ce, int start, vector<vector<int> >
         matrix[i][cs] = start;
         start++;
     }
-    spiral_help(rs + 1, re - 1, cs + 1, cs - 1, start, matrix);
+    spiral_help(rs + 1, re - 1, cs + 1, ce - 1, start, matrix);
 }
 
 
@@ -36,10 +42,10 @@ vector<vector<int> > spiral(int n) {
 }
 
 int main() {
-    vector<vector<int> > matrix = spiral(3);
+    vector<vector<int> > matrix = spiral(4);
     cout << "result: " << endl;
-    for (int i = 0; i < 3; ++i) {
-        for (int j = 0; j < 3; ++j)
+    for (int i = 0; i < 4; ++i) {
+        for (int j = 0; j < 4; ++j)
             cout << matrix[i][j] << " ";
         cout << endl;
     }
