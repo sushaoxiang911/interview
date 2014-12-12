@@ -1,4 +1,5 @@
 #include <iostream>
+#include <climits>
 
 using namespace std;
 
@@ -8,15 +9,17 @@ struct node {
     node* right;
 };
 
-int get_min_depth(node* root) {
-    if (root == NULL)
-        return 0;
-    int left_depth = get_min_depth(root -> left);
-    int right_depth = get_min_depth(root -> right);
-    if (left_depth < right_depth)
-        return left_depth + 1;
-    else
-        return right_depth + 1;
+int get_min_depth(node* root) { 
+    if (root -> left == NULL && root -> right == NULL)
+        return 1;
+    int left_depth = INT_MAX;
+    if (root -> left)
+        get_min_depth(root -> left);
+    int right_depth = INT_MAX;
+    if (root -> right)
+        get_min_depth(root -> right);
+    
+    return left_depth < right_depth ? left_depth + 1 : right_depth + 1;
 }
 
 int main() {

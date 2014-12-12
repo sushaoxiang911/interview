@@ -30,7 +30,7 @@ int find_largest_BST_help(node* root, int &max, int &min, int &size, node* &bst)
     // which we don't know
     int current_min = (left_BST_nodes == 0) ? root -> val : min;
     // left child is not a bst
-    // or the current node cannot be added into the 
+    // or the current node is smaller than the max of left subtree 
     if (left_BST_nodes == -1 || 
             (root -> val <= max && left_BST_nodes != 0))
         is_BST = false;
@@ -45,7 +45,7 @@ int find_largest_BST_help(node* root, int &max, int &min, int &size, node* &bst)
     if (is_BST) {
         max = current_max;
         min = current_min;
-        int current_size = left_BST_nodes = right_BST_nodes + 1;
+        int current_size = left_BST_nodes + right_BST_nodes + 1;
         if (current_size > size) {
             size = current_size;
             bst = root;

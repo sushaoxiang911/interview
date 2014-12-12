@@ -1,0 +1,5 @@
+Build iterator for class that
+bool hasNext returns if there is a next value
+int next returns the next value and move right side by one
+1 dimension
+2 dimenstion

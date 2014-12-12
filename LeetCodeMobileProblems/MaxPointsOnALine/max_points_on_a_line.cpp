@@ -60,7 +60,8 @@ int find_points(vector<point> points) {
 
 int main() {
     vector<point> points 
-        {point{1, 3}, point{1, 4}, point{2, 4}, point{1, 2}, point{2, 6}, point{1, 2}};
+        {point{84, 250}, point{0, 0}, point{1, 0}, point{0, -70}, point{1, -1}, 
+                point{21, 10}, point{42, 90}, {-42, -230}};
     cout << "result: " << find_points(points) << endl;
 }
 
