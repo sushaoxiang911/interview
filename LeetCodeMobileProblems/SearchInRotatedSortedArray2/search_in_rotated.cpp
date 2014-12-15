@@ -15,29 +15,22 @@ int find_help(vector<int> &arr, int start, int end, int target) {
     
     // left side is sorted and no duplicates
     if (arr[start] < arr[mid]) {
-        if (target >= arr[start] && target <= arr[mid])
+        if (target >= arr[start] && target < arr[mid])
             return find_help(arr, start, mid - 1, target);
         else
             return find_help(arr, mid + 1, end, target);
     } else if (arr[start] > arr[mid]) {
-        if (target >= arr[mid] && target <= arr[end])
+        if (target > arr[mid] && target <= arr[end])
             return find_help(arr, mid + 1, end, target);
         else
             return find_help(arr, start, mid - 1, target);
     } else {
-        // we know that arr[start] == arr[mid]
-        // and if arr[mid] == arr[end]
         // we cannot decide which halve to go
-        if (arr[mid] == arr[end]) {
-            int result = find_help(arr, start, mid - 1, target);
-            if (result < 0)
-                return find_help(arr, mid + 1, end, target);
-            else
-                return result; 
-        // we know that left side is duplicates
-        } else {
+        int result = find_help(arr, start, mid - 1, target);
+        if (result < 0)
             return find_help(arr, mid + 1, end, target);
-        }
+        else
+            return result; 
     }
 }
 

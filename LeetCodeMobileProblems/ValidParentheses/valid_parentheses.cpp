@@ -11,25 +11,21 @@ bool is_valid(string str) {
         return true;
     stack<char> s;
     for (int i = 0; i < str.size(); ++i) {
-        if (str[i] == '(' || str[i] =='[' || str[i] == '{')
-            s.push(str[i]);
-        else if (str[i] == ')') {
-            if (s.top() == '(')
+        char current = str[i];
+        if (current == '(' || current =='[' || current == '{')
+            s.push(current);
+        else {
+            // before using top, always check the empty!
+            if (s.empty())
+                return false;
+            char paired = s.top();
+            if ((current == ')' && paired == '(') ||
+                    (current == ']' && paired == '[') ||
+                    (current == '}' && paired == '{'))
                 s.pop();
             else
                 return false;
-        } else if (str[i] == ']') {
-            if (s.top() == '[')
-                s.pop();
-            else
-                return false;
-        } else if (str[i] == '}') {
-            if (s.top() == '{')
-                s.pop();
-            else
-                return false;
-        } else
-            return false;
+        } 
     }
     if (s.empty())
         return true;

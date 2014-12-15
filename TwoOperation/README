@@ -1,0 +1,4 @@
+given a number n
+you have two operation MUL_2 and ADD_1
+try to find the minimum number of operations that are used to get the number starting from 0
+n is a long type that <= 10^16
