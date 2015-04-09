@@ -6,8 +6,8 @@ using namespace std;
 
 struct node {
     int val;
-    node* left;
-    node* right;
+    node* left = NULL;
+    node* right = NULL;
 };
 
 
@@ -28,6 +28,8 @@ int find_largest_BST_help(node* root, int &max, int &min, int &size, node* &bst)
     // since we don't know current node is the left child or the right child of the parent
     // we have to remember the min and max since we might use either of them
     // which we don't know
+
+    // left_BST_nodes == 0 means that the left node is NULL but it is still a BST
     int current_min = (left_BST_nodes == 0) ? root -> val : min;
     // left child is not a bst
     // or the current node is smaller than the max of left subtree 

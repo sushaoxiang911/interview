@@ -1,0 +1,5 @@
+draw a binary tree
+so that nodes will not overlapped and parent is in the middle of the child
+   __1__
+  _2_ _3_
+  4 5 6 7

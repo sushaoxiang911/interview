@@ -1,0 +1,9 @@
+Code Description
+
+In the drawing result, consecutive underscores represent an edge from the parent to the child node. A node is represented by the value of the node. (So in this code, I just consider node with value 0 to 9 since numbers bigger than 9 will take extra space and I didn't discuss about drawing in such situation.) The node under the underscore is the child node of that parent. 
+
+In this binary tree drawing algorithm, I used a very intuitive consideration. I include a position value in the node struct, which means the absolute position of that node in its print level. And call a recursive function on the tree. The recursive step is as follow: for the root node, I recursively call the function on its left sub-tree and right-subtree. Then the nodes of left-subtree and right-tree are assigned without knowing each other. Then I write a help function to shift the right sub-tree so that for every level, the right-most node of the left-subtree will not overlap the left-most node of the right-subtree. After shifting the right-subtree, I assign the root position as the middle of the root of its left-subtree and the root of its right-subtree. 
+
+After assigning the position of each node, I do a level order traversal and elegantly output the underscores and node values. 
+
+ 

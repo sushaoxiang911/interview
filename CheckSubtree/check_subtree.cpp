@@ -9,8 +9,8 @@ using namespace std;
 
 struct node {
     int val;
-    node* left;
-    node* right;
+    node* left = NULL;
+    node* right = NULL;
 };
 
 bool check_same_tree (node* tree1, node* tree2) {
